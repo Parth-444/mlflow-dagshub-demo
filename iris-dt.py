@@ -50,7 +50,7 @@ with mlflow.start_run():
     plt.savefig('confusion_matrix.png')
     mlflow.log_artifact('confusion_matrix.png')
     mlflow.log_artifact(__file__)
-    mlflow.sklearn.log_model(dt, 'decision tree')
+    mlflow.sklearn.log_artifact(dt, 'decision tree')
     mlflow.set_tag("model", "decision tree")
     mlflow.set_tag('author', 'personal')
     print('accuracy', accuracy)
