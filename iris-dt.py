@@ -50,7 +50,12 @@ with mlflow.start_run():
     plt.savefig('confusion_matrix.png')
     mlflow.log_artifact('confusion_matrix.png')
     mlflow.log_artifact(__file__)
-    mlflow.log_artifact(dt, 'decision tree')
+    import pickle
+    with open("dt.pkl", "wb") as f:
+        pickle.dump(dt, f)
+
+    # log it as artifact
+    mlflow.log_artifact("dt.pkl", artifact_path="decision_tree")
     mlflow.set_tag("model", "decision tree")
     mlflow.set_tag('author', 'personal')
     print('accuracy', accuracy)
